@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<!-- Server: sfn-web-2 -->
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]>-->
+<html class="js flexbox canvas canvastext no-touch geolocation postmessage no-websqldatabase no-indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths js canvas canvastext" lang="en"><!--<![endif]--><head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>LCDproc / Patches / #21 Add Raspberry Pi 2 support to existing HD44780-rpi driver</title>
+    
+<meta id="project_name" name="project_name" content="lcdproc">
+<script src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/analytics.js" async=""></script><script src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/modernizr.js"></script>
+<!--[if lt IE 7 ]>
+  <script src="http://a.fsdn.com/allura/nf/1452800555/_ew_/theme/sftheme/js/sftheme/dd_belatedpng.js"></script>
+  <script> DD_belatedPNG.fix('img, .png_bg'); //fix any <img> or .png_bg background-images </script>
+<![endif]-->
+<link href="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/css_003.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript">
+        /*jslint onevar: false, nomen: false, evil: true, css: true, plusplus: false, white: false, forin: true, on: true, immed: false */
+        /*global confirm, alert, unescape, window, jQuery, $, net, COMSCORE */
+    </script>
+    
+        <!-- ew:head_css -->
+
+    
+        <link rel="stylesheet" type="text/css" href="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/css_002.css">
+    
+        <link rel="stylesheet" type="text/css" href="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/font-awesome.css">
+    
+        <link rel="stylesheet" type="text/css" href="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/forge.css">
+    
+        <link rel="stylesheet" type="text/css" href="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/simplemde.css">
+    
+        <link rel="stylesheet" type="text/css" href="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/css.css">
+    
+        
+<!-- /ew:head_css -->
+
+    
+    
+        <!-- ew:head_js -->
+
+    
+        <script type="text/javascript" src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/js"></script>
+    
+        
+<!-- /ew:head_js -->
+
+    
+
+    
+        <style type="text/css">
+            #page-body.project---init-- #top_nav { display: none; }
+
+#page-body.project---init-- #nav_menu_holder { display: none; margin-bottom: 0; }
+
+#page-body.project---init-- #content_base {margin-top: 0; }
+        </style>
+    
+    
+<style type="text/css">
+  input[name='ticket_form.summary']{
+    top: 5px;
+    left: 10px;
+    position: absolute;
+    z-index: 21;
+  }
+  div.form_holder .reply textarea{
+    height: 60px;
+  }
+  div.actions{
+    width: 150px;
+  }
+  .markdown_edit textarea {
+    height: 100px;
+  }
+</style>
+
+    <style>.XFOyUavFNTuZPALozDDJFJw {
+        display: none
+    }</style>
+
+    
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://sourceforge.net/p/lcdproc/patches/21/feed.rss">
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://sourceforge.net/p/lcdproc/patches/21/feed.atom">
+
+    
+    
+
+
+<script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    function _add_tracking(prefix, tracking_id) {
+        ga('create', tracking_id, {cookieDomain: 'auto', 'name': prefix});
+        
+        ga(prefix+'.set', 'dimension9', 'lcdproc');
+        ga(prefix+'.set', 'dimension10', 'tickets');
+        ga(prefix+'.send', 'pageview');
+    }
+      _add_tracking('sfnt1', 'UA-32013-6');
+      _add_tracking('sfnt2', 'UA-36130941-1');
+    
+</script>
+</head>
+
+<body id="forge">
+
+    
+        <!-- ew:body_top_js -->
+
+    
+        
+<!-- /ew:body_top_js -->
+
+    
+
+
+<header id="site-header">
+    <div class="wrapper">
+        <a href="http://sourceforge.net/" class="logo">
+            <span>SourceForge</span>
+        </a>
+        
+        <form method="get" action="/directory/">
+            <input tabindex="1" id="words" name="q" placeholder="Search" type="text">
+        </form>
+        
+        <!--Switch to {language}-->
+        <nav id="nav-site">
+            <a href="http://sourceforge.net/directory/" title="Browse our software.">Browse</a>
+            <a href="http://sourceforge.net/directory/enterprise" title="Browse our Enterprise software.">Enterprise</a>
+            <a href="http://sourceforge.net/blog/" title="Read the latest news from the SF HQ.">Blog</a>
+            <a href="http://sourceforge.net/jobs?source=header" title="Search 80k+ tech jobs.">Jobs</a>
+            <a href="http://deals.sourceforge.net/?utm_source=sourceforge&amp;utm_medium=navbar&amp;utm_campaign=homepage" title="Discover and Save on the Best Gear, Gadgets, and Software" class="featured-link" target="_blank">Deals</a>
+            <a href="http://sourceforge.net/support" title="Contact us for help and feedback.">Help</a>
+        </nav>
+        <nav id="nav-account">
+            
+              <div class="logged_out">
+                <a href="http://sourceforge.net/auth/">Log In</a>
+                <span>or</span>
+                <a href="https://sourceforge.net/user/registration/">Join</a>
+              </div>
+            
+        </nav>
+        
+    </div>
+</header>
+<header id="site-sec-header">
+    <div class="wrapper">
+        <nav id="nav-hubs">
+            <h4>Solution Centers</h4>
+            <a href="http://goparallel.sourceforge.net/">Go Parallel</a>
+        </nav>
+        <nav id="nav-collateral">
+            <a href="http://library.slashdotmedia.com/?source=sfnet_header">Resources</a>
+            
+            <a href="">Newsletters</a>
+            
+        </nav>
+    </div>
+</header>
+
+    
+    
+    
+
+<section id="page-body" class=" neighborhood-Projects project-lcdproc mountpoint-patches">
+    <div id="nav_menu_holder">
+        
+            
+
+
+
+    
+    
+    
+    
+    <nav id="breadcrumbs">
+        <ul>
+            <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="http://sourceforge.net/">Home</a></li>
+            <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="http://sourceforge.net/directory">Browse</a></li>
+            
+            
+                
+                
+            
+            
+                
+            
+            
+            
+                <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a itemprop="url" href="http://sourceforge.net/p/lcdproc/">LCDproc</a></li>
+                
+            
+            
+                <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">Patches</li>
+                
+            
+        </ul>
+    </nav>
+    
+    
+    
+  
+    
+    <h1 class="project_title">
+        <a href="http://sourceforge.net/p/lcdproc/" class="project_link">LCDproc</a>
+    </h1>
+    
+    
+    
+    <h2 class="project_summary">
+        
+    </h2>
+    
+    <div class="brought-by">
+        Brought to you by:
+        
+        
+            
+                <a href="http://sourceforge.net/u/ethandicks/">ethandicks</a>,
+            
+            
+                <a href="http://sourceforge.net/u/reenoo/">reenoo</a>,
+            
+            
+                <a href="http://sourceforge.net/u/toykeeper/">toykeeper</a>,
+            
+            
+                <a href="http://sourceforge.net/u/willfe/">willfe</a>
+            </div>
+    
+
+        
+    </div>
+    <div id="top_nav" class="">
+        
+            
+<div id="top_nav_admin">
+<ul class="dropdown">
+  
+    <li class="">
+        <a href="http://sourceforge.net/projects/lcdproc/" class="tool-summary-32">
+            Summary
+        </a>
+        
+        
+    </li>
+  
+    <li class="">
+        <a href="http://sourceforge.net/projects/lcdproc/files/" class="tool-files-32">
+            Files
+        </a>
+        
+        
+    </li>
+  
+    <li class="">
+        <a href="http://sourceforge.net/projects/lcdproc/reviews" class="tool-reviews-32">
+            Reviews
+        </a>
+        
+        
+    </li>
+  
+    <li class="">
+        <a href="http://sourceforge.net/projects/lcdproc/support" class="tool-support-32">
+            Support
+        </a>
+        
+        
+    </li>
+  
+    <li class="">
+        <a href="http://sourceforge.net/p/lcdproc/news/" class="tool-blog-32">
+            News
+        </a>
+        
+        
+    </li>
+  
+    <li class="">
+        <a href="http://sourceforge.net/p/lcdproc/mailman/" class="tool-mailman-32">
+            Mailing Lists
+        </a>
+        
+        
+    </li>
+  
+    <li class="selected">
+        <a href="http://sourceforge.net/p/lcdproc/_list/tickets" class="tool-tickets-32">
+            Tickets ▾
+        </a>
+        
+        
+            <ul>
+                
+                    <li class="selected"><a href="http://sourceforge.net/p/lcdproc/patches/">Patches</a></li>
+                
+                    <li class=""><a href="http://sourceforge.net/p/lcdproc/support-requests/">Support Requests</a></li>
+                
+                    <li class=""><a href="http://sourceforge.net/p/lcdproc/bugs/">Bugs</a></li>
+                
+                    <li class=""><a href="http://sourceforge.net/p/lcdproc/feature-requests/">Feature Requests</a></li>
+                
+            </ul>
+        
+    </li>
+  
+    <li class="">
+        <a href="http://sourceforge.net/p/lcdproc/discussion/" class="tool-discussion-32">
+            Discussion
+        </a>
+        
+        
+    </li>
+  
+    <li class="">
+        <a href="http://sourceforge.net/p/lcdproc/code/" class="tool-cvs-32">
+            Code
+        </a>
+        
+        
+    </li>
+  
+  
+</ul>
+</div>
+
+
+        
+    </div>
+    <div id="content_base">
+        
+            
+                
+                    
+
+
+<div id="sidebar">
+  
+    <form id="search" method="GET" action="/p/lcdproc/patches/search/">
+      <input tabindex="2" name="q" title="Search Patches" placeholder="Search Patches" type="text">
+    </form>
+  
+    
+    
+      
+      
+        
+    
+      <ul class="sidebarmenu">
+      
+    
+  <li>
+      
+        <a class="icon sidebar-disabled" href="http://sourceforge.net/p/lcdproc/patches/new/" title="To create a new ticket, you must be authorized by the project admin."><i class="fa fa-plus-circle"></i>
+      
+      <span>Create Ticket</span>
+      </a>
+  </li>
+  
+      
+        
+    
+  <li>
+      
+        <a class="icon" href="http://sourceforge.net/p/lcdproc/patches/stats" title="Stats"><i class="fa fa-line-chart"></i>
+      
+      <span>View Stats</span>
+      </a>
+  </li>
+  
+      
+        
+    
+      </ul>
+      
+    
+    
+      <h3 class="">Group</h3>
+    
+  
+      
+        
+    
+    
+      <h3 class="">Searches</h3>
+    
+  
+      
+        
+    
+      <ul class="sidebarmenu">
+      
+    
+  <li>
+      
+        <a href="http://sourceforge.net/p/lcdproc/patches/search/?q=%21status%3Aclosed-duplicate+%26%26+%21status%3Aclosed-accepted+%26%26+%21status%3Aclosed-wont-fix+%26%26+%21status%3Aclosed-fixed+%26%26+%21status%3Aclosed&amp;sort=mod_date_dt+desc" class="search_bin">
+      
+      <span>Changes</span><small>8</small>
+      </a>
+  </li>
+  
+      
+        
+    
+  <li>
+      
+        <a href="http://sourceforge.net/p/lcdproc/patches/search/?q=status%3Aclosed-duplicate+or+status%3Aclosed-accepted+or+status%3Aclosed-wont-fix+or+status%3Aclosed-fixed+or+status%3Aclosed" class="search_bin">
+      
+      <span>Closed Tickets</span><small>17</small>
+      </a>
+  </li>
+  
+      
+        
+    
+  <li>
+      
+        <a href="http://sourceforge.net/p/lcdproc/patches/search/?q=%21status%3Aclosed-duplicate+%26%26+%21status%3Aclosed-accepted+%26%26+%21status%3Aclosed-wont-fix+%26%26+%21status%3Aclosed-fixed+%26%26+%21status%3Aclosed" class="search_bin">
+      
+      <span>Open Tickets</span><small>8</small>
+      </a>
+  </li>
+  
+      
+        
+    
+      </ul>
+      
+    
+    
+      <h3 class="">Help</h3>
+    
+  
+      
+        
+    
+      <ul class="sidebarmenu">
+      
+    
+  <li>
+      
+        <a href="http://sourceforge.net/p/lcdproc/patches/markdown_syntax">
+      
+      <span>Formatting Help</span>
+      </a>
+  </li>
+  
+      
+    
+    
+      </ul>
+      
+    
+    
+      <script>
+                $(function() {
+            $.ajax({
+                url:'/p/lcdproc/patches/bin_counts',
+                success: function(data) {
+                    var $spans = $('.search_bin > span');
+                    $.each(data.bin_counts, function(i, item) {
+                        $spans.each(function() {
+                            if ($(this).text() === item.label) {
+                                $(this).after('<small>' + item.count + '</small>').fadeIn('fast');
+                            }
+                        });
+                    });
+                }
+            });
+            if ($('.milestones').length > 0) {
+                $.ajax({
+                    url: '/p/lcdproc/patches/milestone_counts',
+                    success: function(data) {
+                        var $spans = $('.milestones > span');
+                        $.each(data.milestone_counts, function(i, item) {
+                            $spans.each(function() {
+                                if ($(this).text() === item.name) {
+                                    $(this).after('<small>' + item.count + '</small>').fadeIn('fast');
+                                }
+                            });
+                        });
+                    }
+                });
+            }
+        });
+      </script>
+    
+</div>
+                
+                
+            
+            
+                
+            
+            <div class="grid-20 pad">
+                <h2 class="dark title">#21 Add Raspberry Pi 2 support to existing HD44780-rpi driver
+                    <!-- actions -->
+                    <small>
+                        
+  <a class="icon" href="http://sourceforge.net/p/lcdproc/patches/21/feed.rss" title="Follow this Ticket"><i class="fa fa-rss"></i></a>
+
+
+
+
+                    </small>
+                    <!-- /actions -->
+                </h2>
+                
+<div class="editbox">
+  
+  <div class="view_holder">
+      
+        <div class="grid-4">
+          <label class="simple">Milestone: </label>
+          
+            None
+          
+        </div>
+      
+      <div class="grid-4">
+        <label class="simple">Status: </label>
+        <span class="open">pending</span>
+      </div>
+      <div class="grid-5 ticket-assigned-to">
+        <label class="simple">Owner: </label>
+        
+          nobody
+        
+      </div>
+      <div class="grid-4">
+        <label class="simple">Labels: </label>
+        
+          None
+        
+      </div>
+    <div style="clear:both"></div>
+    
+    
+      
+      
+        
+      
+        
+          
+            <div class="grid-4">
+              <label class="simple">Priority:</label>
+              
+                5
+              
+            </div>
+          
+        
+      
+    
+    <div style="clear:both"></div>
+    <div class="grid-4">
+      <label class="simple">Updated:</label>
+      <span id="updated_id">
+    <span title="Sun Apr 05, 2015 10:02 PM UTC">
+      2015-04-05
+    </span>
+</span>
+    </div>
+    <div class="grid-4">
+      <label class="simple">Created:</label>
+      
+    <span title="Sat Feb 07, 2015 05:14 PM UTC">
+      2015-02-07
+    </span>
+
+    </div>
+    <div class="grid-5">
+      <label class="simple">Creator:</label>
+      <a href="http://sourceforge.net/u/paulwebster/">Paul Webster</a>
+    </div>
+    <div class="grid-4">
+      <label class="simple">Private:</label>
+      No
+        
+    </div>
+  </div>
+</div>
+
+                <div>
+                    
+                    
+
+<div id="ticket_content">
+  <div class="markdown_content"><p>Raspberry Pi 2 has moved the mapped base address of peripherals.<br>
+So instead of having it hard-coded via a define, it is now necessary to detect RPi type and store address as a variable.</p>
+<p>There is a new routine from RPi FOundation to help with this - but it
+ appears to depend on Device Tree support which, if correct, means that 
+it would not work on old versions of the OS.<br>
+This patch determine RPi version based on info found in /proc/cpuinfo.<br>
+It might not work for future versions of RPi but we are not in the future yet.</p></div>
+  
+    <strong class="grid-18">1 Attachments</strong>
+    <div class="clear">
+    
+        <div class="attachment_thumb">
+          
+          <a href="http://sourceforge.net/p/lcdproc/patches/21/attachment/lcdproc-hd44780-rpi2.diff">lcdproc-hd44780-rpi2.diff</a>
+        </div>
+    
+    </div>
+    <div style="clear:both"></div>
+  
+</div>
+
+                </div>
+                
+                
+  
+  
+  <div id="discussion_holder">
+    <h2>Discussion</h2>
+    
+    
+
+<div>
+                <div class="row">
+                        <div class="column grid_12">
+      
+        <div>
+  <div class="page_list">
+    
+  </div>
+  <div class="clear"></div>
+</div>
+      
+      <div id="comment">
+        
+          
+            
+            <ul>
+              <!-- post_thread -->
+<li>
+
+
+
+  
+
+
+
+<div>
+  <div id="26f7" class="discussion-post">
+    <div class="row">
+      <div class="grid-2 tcenter gravatar">
+       <p class="gravatar">
+        
+        
+  
+    <img src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/8270088a1171bdacecf773586550cc59.jpg" alt="Markus Dolze" title="Markus Dolze" class="emboss x48">
+  <br>
+        <small>
+            
+        
+            <a href="http://sourceforge.net/u/mmdolze/">
+                
+                    Markus Dolze
+                
+            </a>
+        
+    
+        </small>
+        <br>
+        <small>
+    <span title="Sun Feb 08, 2015 08:55 AM UTC">
+      2015-02-08
+    </span>
+</small>
+       </p>
+      </div>
+      
+      
+      <div class="grid-14" style="width: 525px">
+        <div class="display_post">
+          
+            
+            <div class="markdown_content"><ul>
+<li><strong>status</strong>: open --&gt; pending</li>
+<li><strong>assigned_to</strong>: Markus Dolze</li>
+<li><strong>Group</strong>:  --&gt; </li>
+</ul></div>&nbsp;
+            
+  
+            
+          
+        </div>
+        
+        
+        
+        </div>
+        <div class="options grid-3">
+        
+        <div style="clear:both">
+            <div class="little_link">
+                <a href="http://sourceforge.net/p/lcdproc/patches/21/#26f7" class="little_link shortlink"><span>Link</span></a><br>
+                
+            </div>
+            
+          
+        </div>
+      </div>
+      <div class="shortlink_popup modal" style="display: none">
+        <a class="icon close" href="#" title="Close"><i class="fa fa-close"></i></a>
+        If you would like to refer to this comment somewhere else in this project, copy and paste the following link:
+        <input tabindex="3" style="width:100%" value="http://sourceforge.net/p/lcdproc/patches/21/#26f7" type="text">
+      </div>
+    </div>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<style type="text/css">
+    div.moderate {
+        color:grey;
+    }
+</style>
+
+    <!-- post_thread replies -->
+    <ul>
+    </ul>
+    <!-- post_thread /replies -->
+</li>
+<!-- /post_thread -->
+            </ul>
+            
+            <ul>
+              <!-- post_thread -->
+<li>
+
+
+
+  
+
+
+
+<div>
+  <div id="eba5" class="discussion-post">
+    <div class="row">
+      <div class="grid-2 tcenter gravatar">
+       <p class="gravatar">
+        
+        
+  
+    <img src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/7cbeaca326bcd622f700741718ea9b04.jpg" alt="Paul Webster" title="Paul Webster" class="emboss x48">
+  <br>
+        <small>
+            
+        
+            <a href="http://sourceforge.net/u/paulwebster/">
+                
+                    Paul Webster
+                
+            </a>
+        
+    
+        </small>
+        <br>
+        <small>
+    <span title="Sun Feb 08, 2015 02:39 PM UTC">
+      2015-02-08
+    </span>
+</small>
+       </p>
+      </div>
+      
+      
+      <div class="grid-14" style="width: 525px">
+        <div class="display_post">
+          
+            
+            <div class="markdown_content"><p>Modified to try to get the GPIO base address from /proc/iomem first - which should make it more future proof.<br>
+There is a risk that new text strings or syntax could appear in 
+/proc/iomem that break things - but hopefully that will not happen.<br>
+If the strings are not found then uses hardware info to pick one of 2 pre-defined addresses (as in previous patch).</p></div>&nbsp;
+            
+  
+            
+          
+        </div>
+        
+        
+        
+        <div>
+          <strong>Attachments</strong>
+          <div class="clear"></div>
+          
+            <div class="attachment_thumb">
+                <form method="POST" action="/p/lcdproc/patches/_discuss/thread/4c659fe3/eba5/attachment/lcdproc-hd44780-rpi2-v2.diff">
+                
+                    <a href="http://sourceforge.net/p/lcdproc/patches/_discuss/thread/4c659fe3/eba5/attachment/lcdproc-hd44780-rpi2-v2.diff">lcdproc-hd44780-rpi2-v2.diff</a>
+                    
+                
+                <input tabindex="4" name="delete" value="True" type="hidden">
+                
+    <input tabindex="5" name="_session_id" value="d0f547dddd53b3664563a04ca39675350b19d30bf47656cf7c5e496244f37eee9d035a0ba9bee878" type="hidden">
+  
+                </form>
+            </div>
+          
+        </div>
+        
+        </div>
+        <div class="options grid-3">
+        
+        <div style="clear:both">
+            <div class="little_link">
+                <a href="http://sourceforge.net/p/lcdproc/patches/21/#eba5" class="little_link shortlink"><span>Link</span></a><br>
+                
+            </div>
+            
+          
+        </div>
+      </div>
+      <div class="shortlink_popup modal" style="display: none">
+        <a class="icon close" href="#" title="Close"><i class="fa fa-close"></i></a>
+        If you would like to refer to this comment somewhere else in this project, copy and paste the following link:
+        <input tabindex="6" style="width:100%" value="http://sourceforge.net/p/lcdproc/patches/21/#eba5" type="text">
+      </div>
+    </div>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<style type="text/css">
+    div.moderate {
+        color:grey;
+    }
+</style>
+
+    <!-- post_thread replies -->
+    <ul>
+    </ul>
+    <!-- post_thread /replies -->
+</li>
+<!-- /post_thread -->
+            </ul>
+            
+            <ul>
+              <!-- post_thread -->
+<li>
+
+
+
+  
+
+
+
+<div>
+  <div id="df11" class="discussion-post">
+    <div class="row">
+      <div class="grid-2 tcenter gravatar">
+       <p class="gravatar">
+        
+        
+  
+    <img src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/2eb78846eabdbdbb332a4bf89edf2635.jpg" alt="jagdeep Sharma" title="jagdeep Sharma" class="emboss x48">
+  <br>
+        <small>
+            
+        
+            <a href="http://sourceforge.net/u/jagdeepsharma/">
+                
+                    jagdeep Sharma
+                
+            </a>
+        
+    
+        </small>
+        <br>
+        <small>
+    <span title="Wed Feb 18, 2015 09:21 PM UTC">
+      2015-02-18
+    </span>
+</small>
+       </p>
+      </div>
+      
+      
+      <div class="grid-14" style="width: 525px">
+        <div class="display_post">
+          
+            
+            <div class="markdown_content"><p>Guyz, could you please be able to share modified files for rpi2. I tried to change drivers based on diff files but no luck.</p>
+<p>Thanks</p></div>&nbsp;
+            
+  
+            
+          
+        </div>
+        
+        
+        
+        </div>
+        <div class="options grid-3">
+        
+        <div style="clear:both">
+            <div class="little_link">
+                <a href="http://sourceforge.net/p/lcdproc/patches/21/#df11" class="little_link shortlink"><span>Link</span></a><br>
+                
+            </div>
+            
+          
+        </div>
+      </div>
+      <div class="shortlink_popup modal" style="display: none">
+        <a class="icon close" href="#" title="Close"><i class="fa fa-close"></i></a>
+        If you would like to refer to this comment somewhere else in this project, copy and paste the following link:
+        <input tabindex="7" style="width:100%" value="http://sourceforge.net/p/lcdproc/patches/21/#df11" type="text">
+      </div>
+    </div>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<style type="text/css">
+    div.moderate {
+        color:grey;
+    }
+</style>
+
+    <!-- post_thread replies -->
+    <ul>
+    </ul>
+    <!-- post_thread /replies -->
+</li>
+<!-- /post_thread -->
+            </ul>
+            
+            <ul>
+              <!-- post_thread -->
+<li>
+
+
+
+  
+
+
+
+<div>
+  <div id="b8f3" class="discussion-post">
+    <div class="row">
+      <div class="grid-2 tcenter gravatar">
+       <p class="gravatar">
+        
+        
+  
+    <img src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/7cbeaca326bcd622f700741718ea9b04.jpg" alt="Paul Webster" title="Paul Webster" class="emboss x48">
+  <br>
+        <small>
+            
+        
+            <a href="http://sourceforge.net/u/paulwebster/">
+                
+                    Paul Webster
+                
+            </a>
+        
+    
+        </small>
+        <br>
+        <small>
+    <span title="Sat Feb 21, 2015 01:21 PM UTC">
+      2015-02-21
+    </span>
+</small>
+       </p>
+      </div>
+      
+      
+      <div class="grid-14" style="width: 525px">
+        <div class="display_post">
+          
+            
+            <div class="markdown_content"><p>Not sure what the rules are for putting binaries here ... so I can understand if someone deletes this.<br>
+However, here is my built version - note this is built to support HD44780 on RPi only.<br>
+Make sure that you set the permissions to be the same as your pre-existing copy.</p></div>&nbsp;
+            
+  
+            
+          
+        </div>
+        
+        
+        
+        <div>
+          <strong>Attachments</strong>
+          <div class="clear"></div>
+          
+            <div class="attachment_thumb">
+                <form method="POST" action="/p/lcdproc/patches/_discuss/thread/4c659fe3/b8f3/attachment/hd44780.so">
+                
+                    <a href="http://sourceforge.net/p/lcdproc/patches/_discuss/thread/4c659fe3/b8f3/attachment/hd44780.so">hd44780.so</a>
+                    
+                
+                <input tabindex="8" name="delete" value="True" type="hidden">
+                
+    <input tabindex="9" name="_session_id" value="d0f547dddd53b3664563a04ca39675350b19d30bf47656cf7c5e496244f37eee9d035a0ba9bee878" type="hidden">
+  
+                </form>
+            </div>
+          
+        </div>
+        
+        </div>
+        <div class="options grid-3">
+        
+        <div style="clear:both">
+            <div class="little_link">
+                <a href="http://sourceforge.net/p/lcdproc/patches/21/#b8f3" class="little_link shortlink"><span>Link</span></a><br>
+                
+            </div>
+            
+          
+        </div>
+      </div>
+      <div class="shortlink_popup modal" style="display: none">
+        <a class="icon close" href="#" title="Close"><i class="fa fa-close"></i></a>
+        If you would like to refer to this comment somewhere else in this project, copy and paste the following link:
+        <input tabindex="10" style="width:100%" value="http://sourceforge.net/p/lcdproc/patches/21/#b8f3" type="text">
+      </div>
+    </div>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<style type="text/css">
+    div.moderate {
+        color:grey;
+    }
+</style>
+
+    <!-- post_thread replies -->
+    <ul>
+      <!-- post_thread -->
+<li>
+
+
+
+  
+
+
+
+<div>
+  <div id="b8f3/20a1" class="discussion-post">
+    <div class="row">
+      <div class="grid-2 tcenter gravatar">
+       <p class="gravatar">
+        
+        
+  
+    <img src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/2eb78846eabdbdbb332a4bf89edf2635.jpg" alt="jagdeep Sharma" title="jagdeep Sharma" class="emboss x32">
+  <br>
+        <small>
+            
+        
+            <a href="http://sourceforge.net/u/jagdeepsharma/">
+                
+                    jagdeep Sharma
+                
+            </a>
+        
+    
+        </small>
+        <br>
+        <small>
+    <span title="Tue Feb 24, 2015 01:31 AM UTC">
+      2015-02-24
+    </span>
+</small>
+       </p>
+      </div>
+      
+      
+      <div class="grid-14" style="width: 505px">
+        <div class="display_post">
+          
+            
+            <div class="markdown_content"><p>Hi Paul,</p>
+<p>thank you so much. I can confirm that it is working fine with RPi2 when queried with LCDproc.</p></div>&nbsp;
+            
+  
+            
+          
+        </div>
+        
+        
+        
+        </div>
+        <div class="options grid-3">
+        
+        <div style="clear:both">
+            <div class="little_link">
+                <a href="http://sourceforge.net/p/lcdproc/patches/21/#b8f3/20a1" class="little_link shortlink"><span>Link</span></a><br>
+                
+            </div>
+            
+          
+        </div>
+      </div>
+      <div class="shortlink_popup modal" style="display: none">
+        <a class="icon close" href="#" title="Close"><i class="fa fa-close"></i></a>
+        If you would like to refer to this comment somewhere else in this project, copy and paste the following link:
+        <input tabindex="11" style="width:100%" value="http://sourceforge.net/p/lcdproc/patches/21/#b8f3/20a1" type="text">
+      </div>
+    </div>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<style type="text/css">
+    div.moderate {
+        color:grey;
+    }
+</style>
+
+    <!-- post_thread replies -->
+    <ul>
+    </ul>
+    <!-- post_thread /replies -->
+</li>
+<!-- /post_thread -->
+    </ul>
+    <!-- post_thread /replies -->
+</li>
+<!-- /post_thread -->
+            </ul>
+            
+            <ul>
+              <!-- post_thread -->
+<li>
+
+
+
+  
+
+
+
+<div>
+  <div id="aac4" class="discussion-post">
+    <div class="row">
+      <div class="grid-2 tcenter gravatar">
+       <p class="gravatar">
+        
+        
+  
+    <img src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/0005480b6a1d683d7c0c97fdcdf2fdd8.jpg" alt="Inonoob" title="Inonoob" class="emboss x48">
+  <br>
+        <small>
+            
+        
+            <a href="http://sourceforge.net/u/inonoob/">
+                
+                    Inonoob
+                
+            </a>
+        
+    
+        </small>
+        <br>
+        <small>
+    <span title="Fri Feb 27, 2015 09:14 PM UTC">
+      2015-02-27
+    </span>
+</small>
+       </p>
+      </div>
+      
+      
+      <div class="grid-14" style="width: 525px">
+        <div class="display_post">
+          
+            
+            <div class="markdown_content"><p>Hey </p>
+<p>I'm a bit struggling with the HD44780 driver. I used to have the 
+HD44780 and the Hifiberry digi working together on the RPI b+ with 
+Openelec. I bought RPi2. I Installed Openelec and activate the Hifiberry
+ Digi by going into /flash/config.txt . In this file you active the 
+Hifiberry Digi by putting "dtoverlay=hifiberry-Digi". So after this i 
+tried the HD44780 and nothing. So i look for help and found this thread.
+ I tried the new HD44780 driver but when i try to load it the Hifiberry 
+is shutdown no sound and the HD44780 is still not working. </p>
+<p>So I may ask does the new driver maybe reinitiate the GPIO mapping and by doing disable the Hifiberry Digi. </p>
+<p>Would it make sense to add a dtoverlay=HD44780 ?? or what would be the next step</p>
+<p>many thanks for your help<br>
+</p></div>&nbsp;
+            
+  
+            
+                <br><small>Last edit: Inonoob 2015-02-27</small>
+            
+          
+        </div>
+        
+        
+        
+        </div>
+        <div class="options grid-3">
+        
+        <div style="clear:both">
+            <div class="little_link">
+                <a href="http://sourceforge.net/p/lcdproc/patches/21/#aac4" class="little_link shortlink"><span>Link</span></a><br>
+                
+            </div>
+            
+          
+        </div>
+      </div>
+      <div class="shortlink_popup modal" style="display: none">
+        <a class="icon close" href="#" title="Close"><i class="fa fa-close"></i></a>
+        If you would like to refer to this comment somewhere else in this project, copy and paste the following link:
+        <input tabindex="12" style="width:100%" value="http://sourceforge.net/p/lcdproc/patches/21/#aac4" type="text">
+      </div>
+    </div>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<style type="text/css">
+    div.moderate {
+        color:grey;
+    }
+</style>
+
+    <!-- post_thread replies -->
+    <ul>
+    </ul>
+    <!-- post_thread /replies -->
+</li>
+<!-- /post_thread -->
+            </ul>
+            
+            <ul>
+              <!-- post_thread -->
+<li>
+
+
+
+  
+
+
+
+<div>
+  <div id="af96" class="discussion-post">
+    <div class="row">
+      <div class="grid-2 tcenter gravatar">
+       <p class="gravatar">
+        
+        
+  
+    <img src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/547fc1283573a76b2b445aac83803d50.jpg" alt="Selene Scriven" title="Selene Scriven" class="emboss x48">
+  <br>
+        <small>
+            
+        
+            <a href="http://sourceforge.net/u/toykeeper/">
+                
+                    Selene Scriven
+                
+            </a>
+        
+    
+        </small>
+        <br>
+        <small>
+    <span title="Sun Apr 05, 2015 10:02 PM UTC">
+      2015-04-05
+    </span>
+</small>
+       </p>
+      </div>
+      
+      
+      <div class="grid-14" style="width: 525px">
+        <div class="display_post">
+          
+            
+            <div class="markdown_content"><ul>
+<li><strong>assigned_to</strong>: Markus Dolze --&gt;  nobody </li>
+</ul></div>&nbsp;
+            
+  
+            
+          
+        </div>
+        
+        
+        
+        </div>
+        <div class="options grid-3">
+        
+        <div style="clear:both">
+            <div class="little_link">
+                <a href="http://sourceforge.net/p/lcdproc/patches/21/#af96" class="little_link shortlink"><span>Link</span></a><br>
+                
+            </div>
+            
+          
+        </div>
+      </div>
+      <div class="shortlink_popup modal" style="display: none">
+        <a class="icon close" href="#" title="Close"><i class="fa fa-close"></i></a>
+        If you would like to refer to this comment somewhere else in this project, copy and paste the following link:
+        <input tabindex="13" style="width:100%" value="http://sourceforge.net/p/lcdproc/patches/21/#af96" type="text">
+      </div>
+    </div>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<style type="text/css">
+    div.moderate {
+        color:grey;
+    }
+</style>
+
+    <!-- post_thread replies -->
+    <ul>
+    </ul>
+    <!-- post_thread /replies -->
+</li>
+<!-- /post_thread -->
+            </ul>
+            
+          
+        
+      </div>
+      <div style="clear:both"></div>
+      
+      <div style="clear:both"></div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+            </div>
+        
+    </div>
+</section>
+  
+<footer id="site-footer">
+    <div class="wrapper">
+        <nav>
+            <h5>SourceForge</h5>
+            <a href="http://sourceforge.net/about">About</a>
+            <a href="http://sourceforge.net/blog/category/sitestatus/">Site Status</a>
+            <a href="http://twitter.com/sfnet_ops">@sfnet_ops</a>
+            <a id="allura-notice" href="http://allura.apache.org/">
+                <p>Powered by</p>
+                <p>Apache Allura™</p>
+                <img src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/logo-black-svg_g.png">
+            </a>
+        </nav>
+        <nav>
+            <h5>Find and Develop Software</h5>
+            <a href="http://sourceforge.net/create/">Create a Project</a>
+            <a href="http://sourceforge.net/directory/">Software Directory</a>
+            <a href="http://sourceforge.net/top">Top Downloaded Projects</a>
+        </nav>
+        <nav>
+            <h5>Community</h5>
+            <a href="http://sourceforge.net/blog/">Blog</a>
+            <a href="http://twitter.com/sourceforge">@sourceforge</a>
+            <a href="http://sourceforge.net/jobs?source=footer">Job Board</a>
+            <a href="http://library.slashdotmedia.com/?source=sfnet_footer">Resources</a>
+        </nav>
+        <nav>
+            <h5>Help</h5>
+            <a href="http://p.sf.net/sourceforge/docs">Site Documentation</a>
+            <a href="http://sourceforge.net/support">Support Request</a>
+            <a href="http://p.sf.net/sourceforge/irc">Real-Time Support</a>
+        </nav>
+    </div>
+</footer>
+<footer id="site-copyright-footer">
+    <div class="wrapper">
+        <div id="copyright">
+            © 2016 Slashdot Media. All Rights Reserved.<br>
+            <div id="dhi-icon"><span class="logo-DHI-alt"></span></div>
+            <div id="service-text"><div class="smalltext"> SourceForge is a <a href="http://www.dhigroupinc.com/" target="_blank">DHI service</a></div></div>
+        </div>
+        <nav>
+            <a href="http://slashdotmedia.com/terms-of-use">Terms</a>
+            <a href="http://slashdotmedia.com/privacy-statement/">Privacy</a>
+            <span consent="null" id="teconsent"><a style="cursor: pointer;" role="button" tabindex="0" id="icon-id020861267503675907">Cookie Preferences</a></span>
+            <a href="http://slashdotmedia.com/opt-out-choices">Opt Out Choices</a>
+            <a href="http://slashdotmedia.com/">Advertise</a>
+        </nav>
+    </div>
+</footer>
+<div style="position: fixed; top: 20px;" id="messages">
+    
+</div>
+
+
+    <!-- ew:body_js -->
+
+
+    <script type="text/javascript" src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/js_002"></script>
+
+    
+<!-- /ew:body_js -->
+
+
+
+    <!-- ew:body_js_tail -->
+
+
+    <script type="text/javascript">$(document).ready(function () {
+            $("a.attachment_form_add_button").click(function(evt){
+                $(this).hide();
+                $(".attachment_form_fields", this.parentNode).show();
+                evt.preventDefault();
+            });
+            $("a.cancel_edit_post").click(function(evt){
+                $("textarea", this.parentNode).val($("input.original_value", this.parentNode).val());
+                $(".attachment_form_fields input", this.parentNode).val('');
+                evt.preventDefault();
+            });
+         });
+
+        (function () {
+            $('div.discussion-post').each(function () {
+                var post = this;
+                $('.submit', post).button();
+                $('.flag_post', post).click(function (evt) {
+                    evt.preventDefault();
+                    this.parentNode.submit();
+                });
+                $('.moderate_post', post).click(function(e){
+                    e.preventDefault();
+                    var mod = $(this).text();
+                    if (mod === 'Delete' && !confirm('Really delete this post?')) {
+                        return;
+                    }
+                    var id_post = $(post).attr('id');
+                    $.ajax({
+                        type: 'POST',
+                        url: this.parentNode.action,
+                        data: jQuery(this.parentNode).serialize(),
+                        success: function() {
+                            if (mod == 'Delete'){
+                                $(post).remove();
+                            }
+                            else if (mod == 'Approve'){
+                                $('a.reply_post, a.shortlink, form.moderate_spam, form.moderate_approve', post).toggle();
+                                $('div.moderate', post).removeClass('moderate');
+                            }
+                            else if (mod == 'Spam'){
+                                $(post).remove();
+                            }
+                        }
+                    });
+                });
+
+                function get_cm($elem) { return $('.CodeMirror', $elem)[0].CodeMirror; }
+
+                if($('a.edit_post', post)){
+                    $('a.edit_post', post).click(function (evt) {
+                        evt.preventDefault();
+                        $('.display_post', post).hide();
+
+                        // remove the options column, but have to adjust the width of the middle section which is
+                        // already hard-coded
+                        var $opts = $('.options:first', post);
+                        var opts_width = $opts.outerWidth(true);
+                        $opts.hide();
+                        var $post_middle = $('div.grid-14:first', post);
+                        $post_middle.data('original-width', $post_middle.width());
+                        $post_middle.width($post_middle.width() + opts_width);
+
+                        var $edit_post_form = $('.edit_post_form', post);
+                        var cm = get_cm($edit_post_form);
+                        $edit_post_form.show();
+                        cm.refresh();
+                        cm.focus();
+                    });
+                    $("a.cancel_edit_post", post).click(function(evt){
+                        $('.display_post', post).show();
+                        $('.options', post).show();
+                        $('.edit_post_form', post).hide();
+                        var $post_middle = $('div.grid-14:first', post);
+                        $post_middle.width($post_middle.data('original-width'));
+                    });
+                }
+                if($('.reply_post', post)){
+                    $('.reply_post', post).click(function (evt) {
+                        evt.preventDefault();
+                        var $reply_post_form = $('.reply_post_form', post);
+                        var cm = get_cm($reply_post_form);
+                        $reply_post_form.show();
+                        cm.focus();
+                    });
+                    $('.reply_post', post).button();
+                }
+                if($('.add_attachment', post)){
+                    $('.add_attachment', post).click(function (evt) {
+                        evt.preventDefault();
+                        $('.add_attachment_form', post).show();
+                    });
+                }
+                if($('.shortlink', post)){
+                    var popup = $('.shortlink_popup', post);
+                    $('.shortlink', post).click(function(evt){
+                        evt.preventDefault();
+                        popup.lightbox_me({
+                            onLoad: function() {
+                                $('input', popup).select();
+                            }
+                        });
+                    });
+                    $('.close', popup).bind('click', function() {
+                        popup.hide();
+                    });
+                }
+            });
+        }());
+        
+$(function () {
+            $('select.results_per_page').change(function () {
+                this.form.submit();});});
+$(function () {
+          $('input.label_edit').tagsInput({
+              'height':'100%',
+              'width':'100%',
+              'autocomplete_url':'/p/lcdproc/patches/tags'
+          });
+          $('form').on('blur', '.ui-autocomplete-input', function() {
+              setTimeout(function(){
+                  var clicked = $(document.activeElement); // This is the element that has focus
+                  if (clicked.is('#ui-active-menuitem')) {
+                      return false;
+                  } else {
+                      var value = $('div.tagsinput div input').val();
+                      var exists = $('input.label_edit').tagExist(value);
+                      var default_value = $('div.tagsinput div input').attr('data-default');
+                      if ((value !== default_value) && (!exists) && value !== '') {
+                          $('input.label_edit').addTag(value);
+                      }
+                      $('input[type=submit]', this).prop('disabled', true);
+                  }
+                }, 1);
+            });
+        });
+
+        $(document).ready(function () {
+            var thread_tag = $('a.thread_tag');
+            var thread_spam = $('a.sidebar_thread_spam');
+            var tag_thread_holder = $('#tag_thread_holder');
+            var allow_moderate = $('#allow_moderate');
+            var mod_thread_link = $('#mod_thread_link');
+            var mod_thread_form = $('#mod_thread_form');
+            if (mod_thread_link.length) {
+                if (mod_thread_form.length) {
+                    mod_thread_link.click(function (e) {
+                        mod_thread_form.show();
+                        return false;
+                    });
+                }
+            }
+            if (thread_tag.length) {
+                if (tag_thread_holder.length) {
+                    var submit_button = $('input[type="submit"]', tag_thread_holder);
+                    var cancel_button = $('<a href="#" class="btn link">Cancel</a>').click(function(evt){
+                        evt.preventDefault();
+                        tag_thread_holder.hide();
+                        thread_tag.removeClass('active');
+                    });
+                    submit_button.after(cancel_button);
+                    thread_tag.click(function (e) {
+                        tag_thread_holder.show();
+                        thread_tag.addClass('active');
+                        // focus the submit to scroll to the form, then focus the subject for them to start typing
+                        submit_button.focus();
+                        $('input[type="text"]', tag_thread_holder).focus();
+                        return false;
+                    });
+                }
+            }
+            if (thread_spam.length) {
+                if (allow_moderate.length) {
+                    var cval = $.cookie('_session_id');
+                    thread_spam[0].style.display='block';
+                }
+            }
+        });
+        
+$(function () {
+          $('select.project-user-combobox').combobox({
+            source_url: "/p/lcdproc/users"
+          });});
+
+        // Sometimes IE11 is not firing jQuery's ready callbacks like
+        // "$(function(){...})" or "$(document).ready(function(){...});"
+        $(window).load(function(){
+            $('#show_attach').click(function(evt) {
+                $('#view_attach').show();
+                $('#show_attach').hide();
+                evt.preventDefault();
+            });
+            $('form').submit(function() {
+                $('input[type=submit]', this).prop('disabled', true);
+            });
+            $('div.reply.discussion-post a.markdown_preview').click(function(){
+                var arrow = $(this).closest('.discussion-post').find('span.arw');
+                arrow.hide();
+            });
+            $('div.reply.discussion-post a.markdown_edit').click(function(){
+                var arrow = $(this).closest('.discussion-post').find('span.arw');
+                arrow.show();
+            });
+        });</script>
+
+    
+<!-- /ew:body_js_tail -->
+
+
+
+  
+
+
+    
+
+
+    <!-- Google Code for Remarketing tag -->
+    <!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 1002083962;
+        var google_conversion_label = "G_uGCOaBlAQQ-qzq3QM";
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/conversion.js"> </script><iframe name="google_conversion_frame" title="Google conversion frame" src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/a.htm" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" frameborder="0" height="13" width="300">&lt;img
+ height="1" width="1" border="0" alt="" 
+src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/1002083962/?frame=0&amp;random=1452960487810&amp;cv=8&amp;fst=1452960487810&amp;num=1&amp;fmt=1&amp;label=G_uGCOaBlAQQ-qzq3QM&amp;guid=ON&amp;u_h=1080&amp;u_w=1920&amp;u_ah=1056&amp;u_aw=1920&amp;u_cd=24&amp;u_his=3&amp;u_tz=120&amp;u_java=false&amp;u_nplug=4&amp;u_nmime=8&amp;frm=0&amp;url=http%3A//sourceforge.net/p/lcdproc/patches/21/&amp;ref=https%3A//www.google.ro"
+ /&gt;</iframe>
+    <script id="truste_0.050577253862874816" type="text/javascript" src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/get"></script><script async="async" src="LCDproc%20_%20Patches%20_%20%2321%20Add%20Raspberry%20Pi%202%20support%20to%20existing%20HD44780-rpi%20driver_files/notice"></script>
+    <noscript>
+      <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/1002083962/?value=0&amp;label=G_uGCOaBlAQQ-qzq3QM&amp;guid=ON&amp;script=0"/>
+      </div>
+    </noscript>
+
+     
+      
+
+<script>
+    $(document).ready(function () {
+        $(".tooltip").tooltipster({
+            animation: 'fade',
+            delay: 200,
+            theme: 'tooltipster-light',
+            trigger: 'hover',
+            position: 'right',
+            iconCloning: false,
+            maxWidth: 300
+        }).focus(function () {
+            $(this).tooltipster('show');
+        }).blur(function () {
+            $(this).tooltipster('hide');
+        });
+    })
+</script>
+
+</body></html>
